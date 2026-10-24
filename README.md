@@ -16,6 +16,7 @@ App móvil en Flutter para la gestión del servicio de agua potable: consulta de
 
 El **administrador** supervisa clientes, cobranza, solicitudes y fugas, registra pagos en caja, da de alta zonas y envía avisos.
 
+
 **Datos:** viven en memoria (`BaseDatosLocal`), por lo que se reinician al cerrar la app. No hay servidor ni API todavía.
 
 ---
@@ -24,8 +25,16 @@ El **administrador** supervisa clientes, cobranza, solicitudes y fugas, registra
 
 | Usuario | Cómo entra | Dashboard |
 |---|---|---|
+
+
 | **Cliente (familia)** | Contrato + contraseña (ej. `10432` / `agua123`) | **Inicio**: saludo, saldo, gráfica de consumo, accesos rápidos y actividad reciente |
+
+<img width="456" height="1042" alt="Captura de pantalla 2026-10-23 131550" src="https://github.com/user-attachments/assets/189337fc-9e49-4131-87de-fce6cd2e59a5" />
+
 | **Administrador** | *Acceso administrador* en el login (`admin` / `admin2026`) | **Panel de control**: recaudado, por cobrar, clientes con adeudo, fugas y solicitudes pendientes, cobranza por zona y últimos pagos |
+
+<img width="475" height="1042" alt="Captura de pantalla 2026-10-23 132141" src="https://github.com/user-attachments/assets/08841072-47a3-4dae-b830-172c4a7325a7" />
+
 | **Operador / Inspector** | *(por definir)* | *(por definir)* |
 
 > **PENDIENTE:** el tercer tipo de usuario aún no está implementado. Completa esta fila (o quítala) antes de entregar.
@@ -34,22 +43,21 @@ El **administrador** supervisa clientes, cobranza, solicitudes y fugas, registra
 - **Pestañas:** Inicio · Pagos · Solicitudes · Reportes · Perfil.
 - **Formularios:** pago en línea (con PIN), nueva solicitud, reportar fuga, agregar método de pago, cambiar PIN, registro de cuenta nueva.
 - **Listas:** facturas y pagos, mis reportes, notificaciones.
+<img width="470" height="995" alt="Captura de pantalla 2026-10-23 131912" src="https://github.com/user-attachments/assets/3968f3ab-4852-4cc4-b687-c083359c307f" />
+<img width="438" height="976" alt="Captura de pantalla 2026-10-23 200309" src="https://github.com/user-attachments/assets/9518b8ad-0a3d-4aa9-a00e-b6ff0323ea15" />
+<img width="485" height="938" alt="Captura de pantalla 2026-10-23 200400" src="https://github.com/user-attachments/assets/113c0c49-f6e5-40e2-abb9-80c68518151a" />
+
+
 
 ### Administrador
 - **Pestañas:** Panel · Clientes · Solicitudes · Fugas · Más.
 - **Formularios:** agregar zona, enviar aviso (a todos o por zona), registrar pago en caja.
 - **Listas:** clientes (con búsqueda y filtros), solicitudes, reportes de fuga, pagos, zonas.
 
-### Datos de prueba
+<img width="487" height="1037" alt="Captura de pantalla 2026-10-23 132152" src="https://github.com/user-attachments/assets/3bef33ec-314e-44a2-ac54-d5a105cdeb5c" />
+<img width="452" height="1045" alt="Captura de pantalla 2026-10-23 132204" src="https://github.com/user-attachments/assets/9c1c83dd-7107-4fa4-82d7-936407968fa4" />
 
-| Rol | Usuario | Contraseña | PIN |
-|---|---|---|---|
-| Cliente (con adeudo) | `10432` | `agua123` | `1234` |
-| Cliente | `2045871` | `pozo2024` | `4321` |
-| Cliente (sin adeudo) | `9900123456` | `agua2026` | `5678` |
-| Cliente | `3071188` | `rio12345` | `1111` |
-| Cliente | `48210` | `sol45678` | `2222` |
-| Administrador | `admin` | `admin2026` | — |
+
 
 ---
 
@@ -118,79 +126,3 @@ test/                         pruebas del controlador, login y administrador
 ```
 
 **Limitaciones de esta versión:** datos en memoria (se pierden al cerrar), pago sin conexión a bancos, y GPS, cámara y PDF simulados.
-
----
-
-## 5. Capturas de pantalla
-
-### 1. Splashscreen
-
-> ⚠️ Pendiente: la app todavía no tiene splashscreen.
-
-### 2. Autenticación
-
-**Login con validación visible** (campo vacío, contrato de menos de 5 dígitos y credenciales incorrectas):
-
-<img src="docs/capturas/02_login_vacio.png" alt="Login" width="240"> <img src="docs/capturas/02_login_validacion_contrato.png" alt="Validación del contrato" width="240"> <img src="docs/capturas/02_login_credenciales_incorrectas.png" alt="Credenciales incorrectas" width="240">
-
-**Acceso administrador:**
-
-<img src="docs/capturas/04_acceso_administrador.png" alt="Acceso administrador" width="240">
-
-**Registro:**
-
-> ⚠️ Pendiente: captura de *Crear cuenta nueva* (y selección de rol, que aún no existe).
-
-### 3. Dashboards (uno por usuario)
-
-**Administrador: Panel de control**
-
-<img src="docs/capturas/04_dashboard_admin.png" alt="Dashboard administrador" width="240">
-
-**Cliente: Inicio**
-
-<img src="docs/capturas/05_dashboard_cliente.png" alt="Dashboard cliente" width="240">
-
-**Operador / Invitado**
-
-> ⚠️ Pendiente: tercer rol sin implementar.
-
-### 4. Listas
-
-**Lista principal con datos dinámicos** (clientes del administrador):
-
-<img src="docs/capturas/07_lista_clientes.png" alt="Lista de clientes" width="240">
-
-**Lista secundaria o detalle** (saldo y facturas de un contrato):
-
-<img src="docs/capturas/08_saldo_facturacion.png" alt="Saldo y facturación" width="240"> <img src="docs/capturas/15_solicitudes_seguimiento.png" alt="Seguimiento de solicitudes" width="240">
-
-**Estado vacío** ("No hay clientes con esos filtros"):
-
-<img src="docs/capturas/09_estado_vacio.png" alt="Estado vacío" width="240">
-
-### 5. Formularios específicos por rol
-
-**Cliente:** nueva solicitud, reportar fuga y pago en línea.
-
-<img src="docs/capturas/10_form_solicitud.png" alt="Nueva solicitud" width="240"> <img src="docs/capturas/10_form_reporte_fuga.png" alt="Reportar fuga" width="240"> <img src="docs/capturas/14_flujo_pago.png" alt="Pago en línea" width="240">
-
-**Configuración del cliente** (zona, métodos de pago, PIN):
-
-<img src="docs/capturas/16_perfil.png" alt="Perfil" width="240"> <img src="docs/capturas/16_perfil_zona.png" alt="Zona de servicio" width="240">
-
-**Administrador:** agregar zona / enviar aviso.
-
-> ⚠️ Pendiente: captura del formulario del administrador (*Más → Zonas → Agregar zona*).
-
-**Operador:** ⚠️ Pendiente (tercer rol).
-
-### 6. Evidencia funcional
-
-**App corriendo en el equipo** (Android Studio + emulador):
-
-<img src="docs/capturas/13_dispositivo.jpg" alt="Dispositivo" width="700">
-
-**Flujo completo:** login → inicio → saldo y facturación → pagar en línea → pago exitoso.
-
-<img src="docs/capturas/02_login_vacio.png" alt="1. Login" width="200"> <img src="docs/capturas/05_dashboard_cliente.png" alt="2. Inicio" width="200"> <img src="docs/capturas/08_saldo_facturacion.png" alt="3. Facturación" width="200"> <img src="docs/capturas/14_flujo_pago.png" alt="4. Pagar en línea" width="200"> <img src="docs/capturas/14_flujo_pago_exitoso.png" alt="5. Pago exitoso" width="200">
