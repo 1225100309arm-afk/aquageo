@@ -16,7 +16,6 @@ App móvil en Flutter para la gestión del servicio de agua potable: consulta de
 
 El **administrador** supervisa clientes, cobranza, solicitudes y fugas, registra pagos en caja, da de alta zonas y envía avisos.
 
-
 **Datos:** viven en memoria (`BaseDatosLocal`), por lo que se reinician al cerrar la app. No hay servidor ni API todavía.
 
 ---
@@ -25,16 +24,8 @@ El **administrador** supervisa clientes, cobranza, solicitudes y fugas, registra
 
 | Usuario | Cómo entra | Dashboard |
 |---|---|---|
-
-
 | **Cliente (familia)** | Contrato + contraseña (ej. `10432` / `agua123`) | **Inicio**: saludo, saldo, gráfica de consumo, accesos rápidos y actividad reciente |
-
-<img width="456" height="1042" alt="Captura de pantalla 2026-10-23 131550" src="https://github.com/user-attachments/assets/189337fc-9e49-4131-87de-fce6cd2e59a5" />
-
 | **Administrador** | *Acceso administrador* en el login (`admin` / `admin2026`) | **Panel de control**: recaudado, por cobrar, clientes con adeudo, fugas y solicitudes pendientes, cobranza por zona y últimos pagos |
-
-<img width="475" height="1042" alt="Captura de pantalla 2026-10-23 132141" src="https://github.com/user-attachments/assets/08841072-47a3-4dae-b830-172c4a7325a7" />
-
 | **Operador / Inspector** | *(por definir)* | *(por definir)* |
 
 > **PENDIENTE:** el tercer tipo de usuario aún no está implementado. Completa esta fila (o quítala) antes de entregar.
@@ -43,21 +34,22 @@ El **administrador** supervisa clientes, cobranza, solicitudes y fugas, registra
 - **Pestañas:** Inicio · Pagos · Solicitudes · Reportes · Perfil.
 - **Formularios:** pago en línea (con PIN), nueva solicitud, reportar fuga, agregar método de pago, cambiar PIN, registro de cuenta nueva.
 - **Listas:** facturas y pagos, mis reportes, notificaciones.
-<img width="470" height="995" alt="Captura de pantalla 2026-10-23 131912" src="https://github.com/user-attachments/assets/3968f3ab-4852-4cc4-b687-c083359c307f" />
-<img width="438" height="976" alt="Captura de pantalla 2026-10-23 200309" src="https://github.com/user-attachments/assets/9518b8ad-0a3d-4aa9-a00e-b6ff0323ea15" />
-<img width="485" height="938" alt="Captura de pantalla 2026-10-23 200400" src="https://github.com/user-attachments/assets/113c0c49-f6e5-40e2-abb9-80c68518151a" />
-
-
 
 ### Administrador
 - **Pestañas:** Panel · Clientes · Solicitudes · Fugas · Más.
 - **Formularios:** agregar zona, enviar aviso (a todos o por zona), registrar pago en caja.
 - **Listas:** clientes (con búsqueda y filtros), solicitudes, reportes de fuga, pagos, zonas.
 
-<img width="487" height="1037" alt="Captura de pantalla 2026-10-23 132152" src="https://github.com/user-attachments/assets/3bef33ec-314e-44a2-ac54-d5a105cdeb5c" />
-<img width="452" height="1045" alt="Captura de pantalla 2026-10-23 132204" src="https://github.com/user-attachments/assets/9c1c83dd-7107-4fa4-82d7-936407968fa4" />
+### Datos de prueba
 
-
+| Rol | Usuario | Contraseña | PIN |
+|---|---|---|---|
+| Cliente (con adeudo) | `10432` | `agua123` | `1234` |
+| Cliente | `2045871` | `pozo2024` | `4321` |
+| Cliente (sin adeudo) | `9900123456` | `agua2026` | `5678` |
+| Cliente | `3071188` | `rio12345` | `1111` |
+| Cliente | `48210` | `sol45678` | `2222` |
+| Administrador | `admin` | `admin2026` | — |
 
 ---
 
@@ -126,3 +118,44 @@ test/                         pruebas del controlador, login y administrador
 ```
 
 **Limitaciones de esta versión:** datos en memoria (se pierden al cerrar), pago sin conexión a bancos, y GPS, cámara y PDF simulados.
+
+---
+
+## 5. Demostración al docente
+
+- Dispositivo/emulador usado: Android · Emulador Medium Phone (`medium_phone`, Android Studio)
+- Fecha y modalidad de la demostración: [escribe aquí: fecha · presencial / videollamada]
+
+---
+
+## 6. Screenshots
+
+### Splashscreen
+![Splash](screenshots/01-splash.png)
+
+### Autenticación
+Login con validación visible (contrato de menos de 5 dígitos, credenciales incorrectas y acceso de administrador):
+
+<img src="screenshots/02-login.png" alt="Login" width="240"> <img src="screenshots/02-login-error.png" alt="Login error" width="240"> <img src="screenshots/02-login-admin.png" alt="Login admin" width="240">
+
+![Registro](screenshots/03-registro.png)
+
+### Dashboards
+<img src="screenshots/04-dashboard-admin.png" alt="Dashboard Admin" width="240"> <img src="screenshots/05-dashboard-cliente.png" alt="Dashboard Cliente" width="240">
+
+![Dashboard Operador](screenshots/06-dashboard-operador.png)
+
+### Listas
+<img src="screenshots/07-lista-principal.png" alt="Lista principal" width="240"> <img src="screenshots/08-lista-detalle.png" alt="Lista detalle" width="240"> <img src="screenshots/09-lista-vacia.png" alt="Estado vacío" width="240">
+
+### Formularios
+Reportar fuga, nueva solicitud y pago en línea (Cliente):
+
+<img src="screenshots/10-formulario.png" alt="Formulario dominio" width="240"> <img src="screenshots/10-formulario-solicitud.png" alt="Formulario solicitud" width="240"> <img src="screenshots/10-formulario-pago.png" alt="Formulario pago" width="240">
+
+### Evidencia funcional
+<img src="screenshots/11-foto-equipo.png" alt="Foto equipo" width="700">
+
+Flujo: login → inicio → facturación → reporte de fuga → pagar → pago exitoso.
+
+<img src="screenshots/12-navegacion.png" alt="Navegación" width="900">
